@@ -1,0 +1,58 @@
+[debug] [2026-03-07T11:14:48.027Z] ----------------------------------------------------------------------
+[debug] [2026-03-07T11:14:48.032Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\dhruv.panchal\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init hosting
+[debug] [2026-03-07T11:14:48.032Z] CLI Version:   15.9.0
+[debug] [2026-03-07T11:14:48.032Z] Platform:      win32
+[debug] [2026-03-07T11:14:48.033Z] Node Version:  v24.13.0
+[debug] [2026-03-07T11:14:48.033Z] Time:          Sat Mar 07 2026 16:44:48 GMT+0530 (India Standard Time)
+[debug] [2026-03-07T11:14:48.033Z] ----------------------------------------------------------------------
+[debug] 
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\dhruv.panchal\StudioProjects\snapshare
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] 
+[debug] [2026-03-07T11:15:14.509Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-03-07T11:15:14.509Z] > authorizing via signed-in user (dhruv.panchal@simplelogic-it.com)
+[debug] [2026-03-07T11:15:14.512Z] Checked if tokens are valid: false, expires at: 1772802313636
+[debug] [2026-03-07T11:15:14.513Z] Checked if tokens are valid: false, expires at: 1772802313636
+[debug] [2026-03-07T11:15:14.513Z] > refreshing access token with scopes: []
+[debug] [2026-03-07T11:15:14.517Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2026-03-07T11:15:14.517Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2026-03-07T11:15:14.690Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 400
+[debug] [2026-03-07T11:15:14.690Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[error] Authentication Error: Your credentials are no longer valid. Please run firebase login --reauth
+
+For CI servers and headless environments, generate a new token with firebase login:ci
+[error] Authentication Error: Your credentials are no longer valid. Please run firebase login --reauth
+
+For CI servers and headless environments, generate a new token with firebase login:ci
+[debug] [2026-03-07T11:15:14.691Z] Authentication Error: Your credentials are no longer valid. Please run firebase login --reauth
+
+For CI servers and headless environments, generate a new token with firebase login:ci
+[debug] [2026-03-07T11:15:14.791Z] FirebaseError: Authentication Error: Your credentials are no longer valid. Please run firebase login --reauth
+
+For CI servers and headless environments, generate a new token with firebase login:ci
+    at invalidCredentialError (C:\Users\dhruv.panchal\AppData\Roaming\npm\node_modules\firebase-tools\lib\auth.js:177:12)
+    at refreshTokens (C:\Users\dhruv.panchal\AppData\Roaming\npm\node_modules\firebase-tools\lib\auth.js:590:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async getAccessToken (C:\Users\dhruv.panchal\AppData\Roaming\npm\node_modules\firebase-tools\lib\apiv2.js:52:18)
+    at async Client.addAuthHeader (C:\Users\dhruv.panchal\AppData\Roaming\npm\node_modules\firebase-tools\lib\apiv2.js:182:21)
+    at async Client.request (C:\Users\dhruv.panchal\AppData\Roaming\npm\node_modules\firebase-tools\lib\apiv2.js:129:34)
+    at async getProjectPage (C:\Users\dhruv.panchal\AppData\Roaming\npm\node_modules\firebase-tools\lib\management\projects.js:287:17)
+    at async getFirebaseProjectPage (C:\Users\dhruv.panchal\AppData\Roaming\npm\node_modules\firebase-tools\lib\management\projects.js:304:23)
+    at async selectProjectInteractively (C:\Users\dhruv.panchal\AppData\Roaming\npm\node_modules\firebase-tools\lib\management\projects.js:150:41)
+    at async Object.doSetup (C:\Users\dhruv.panchal\AppData\Roaming\npm\node_modules\firebase-tools\lib\init\features\project.js:56:24)
+[error] 
+[error] Error: Failed to list Firebase projects. See firebase-debug.log for more info.
