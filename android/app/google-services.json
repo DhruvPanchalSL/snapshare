@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "405846484028",
+    "project_id": "snapshare-7c0d5",
+    "storage_bucket": "snapshare-7c0d5.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:405846484028:android:7574aecbc624d982258f39",
+        "android_client_info": {
+          "package_name": "com.example.snapshare"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAf1TzLD6MuCa5gFca1agKHlwrT_Y4mYik"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
