@@ -1,0 +1,7 @@
+#!/bin/bash
+git clone https://github.com/flutter/flutter.git --depth 1 -b stable
+export PATH="$PATH:`pwd`/flutter/bin"
+export FLUTTER_ALREADY_RAN_AS_ROOT=1
+flutter config --enable-web
+flutter pub get
+flutter build web --release --web-renderer html
