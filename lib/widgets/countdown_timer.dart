@@ -4,8 +4,13 @@ import 'package:flutter/material.dart';
 
 class CountdownTimer extends StatefulWidget {
   final DateTime expiresAt;
+  final bool compact;
 
-  const CountdownTimer({super.key, required this.expiresAt});
+  const CountdownTimer({
+    super.key,
+    required this.expiresAt,
+    this.compact = false,
+  });
 
   @override
   State<CountdownTimer> createState() => _CountdownTimerState();
@@ -39,17 +44,30 @@ class _CountdownTimerState extends State<CountdownTimer> {
         ? Colors.grey
         : isUrgent
         ? Colors.redAccent
-        : const Color(0xFFFFAA33);
-
+        : const Color(0xFF7C3AED);
     final minutes = _remaining.inMinutes.toString().padLeft(2, '0');
     final seconds = (_remaining.inSeconds % 60).toString().padLeft(2, '0');
+    final label = isExpired ? 'Expired' : '$minutes:$seconds';
 
+    // Compact mode — inline text only (used in desktop send screen row)
+    if (widget.compact) {
+      return Text(
+        label,
+        style: TextStyle(
+          color: color,
+          fontSize: 14,
+          fontWeight: FontWeight.w700,
+        ),
+      );
+    }
+
+    // Full mode — card with icon
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 24),
       decoration: BoxDecoration(
-        color: color.withOpacity(0.1),
+        color: color.withOpacity(0.08),
         borderRadius: BorderRadius.circular(14),
-        border: Border.all(color: color.withOpacity(0.3)),
+        border: Border.all(color: color.withOpacity(0.25)),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -61,11 +79,12 @@ class _CountdownTimerState extends State<CountdownTimer> {
           ),
           const SizedBox(width: 10),
           Text(
-            isExpired ? 'Link expired' : 'Expires in $minutes:$seconds',
+            isExpired ? 'Link expired' : '$minutes : $seconds',
             style: TextStyle(
               color: color,
-              fontSize: 16,
-              fontWeight: FontWeight.w600,
+              fontSize: 22,
+              fontWeight: FontWeight.bold,
+              letterSpacing: 2,
             ),
           ),
         ],
