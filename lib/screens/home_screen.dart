@@ -16,7 +16,7 @@ class HomeScreen extends StatelessWidget {
     final isDesktop = kIsWeb && w > 900;
     return Scaffold(
       backgroundColor: const Color(0xFF0A0A12),
-      appBar: const SnapNavBar(current: 'Home'),
+      appBar: isDesktop ? const SnapNavBar(current: 'Home') : null,
       body: isDesktop ? const _DesktopHome() : const _MobileHome(),
     );
   }
@@ -858,7 +858,7 @@ class _Footer extends StatelessWidget {
           Row(
             children: [
               Text(
-                '© 2024 SnapShare Inc. All rights reserved.',
+                '© 2026  Dhruv Panchal. All rights reserved.',
                 style: TextStyle(
                   color: Colors.white.withOpacity(0.25),
                   fontSize: 12,
