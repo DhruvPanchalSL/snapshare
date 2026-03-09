@@ -3,6 +3,7 @@ import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 
+import '../widgets/nav_bar.dart';
 import 'receive_screen.dart';
 import 'send_screen.dart';
 
@@ -15,6 +16,7 @@ class HomeScreen extends StatelessWidget {
     final isDesktop = kIsWeb && w > 900;
     return Scaffold(
       backgroundColor: const Color(0xFF0A0A12),
+      appBar: const SnapNavBar(current: 'Home'),
       body: isDesktop ? const _DesktopHome() : const _MobileHome(),
     );
   }
@@ -31,77 +33,10 @@ class _DesktopHome extends StatelessWidget {
     return SingleChildScrollView(
       child: Column(
         children: [
-          const _NavBar(),
           const _HeroSection(),
           const _FeaturesSection(),
           const _CtaSection(),
           const _Footer(),
-        ],
-      ),
-    );
-  }
-}
-
-class _NavBar extends StatelessWidget {
-  const _NavBar();
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 64, vertical: 20),
-      decoration: BoxDecoration(
-        color: const Color(0xFF0A0A12),
-        border: Border(
-          bottom: BorderSide(color: Colors.white.withOpacity(0.06)),
-        ),
-      ),
-      child: Row(
-        children: [
-          _logoWidget(),
-          const Spacer(),
-          ...[
-            ('Features', () {}),
-            ('How it Works', () {}),
-            ('Security', () {}),
-            ('API', () {}),
-          ].map(
-            (item) => Padding(
-              padding: const EdgeInsets.only(left: 32),
-              child: TextButton(
-                onPressed: item.$2,
-                child: Text(
-                  item.$1,
-                  style: TextStyle(
-                    color: Colors.white.withOpacity(0.55),
-                    fontSize: 14,
-                  ),
-                ),
-              ),
-            ),
-          ),
-          const SizedBox(width: 32),
-          ElevatedButton(
-            onPressed: () => Navigator.push(
-              context,
-              MaterialPageRoute(builder: (_) => const SendScreen()),
-            ),
-            style: ElevatedButton.styleFrom(
-              backgroundColor: const Color(0xFF7C3AED),
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(8),
-              ),
-              elevation: 0,
-            ),
-            child: const Text(
-              'Get Started',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 14,
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-          ),
         ],
       ),
     );
@@ -858,25 +793,40 @@ class _Footer extends StatelessWidget {
                 ),
               ),
               ...[
-                (
-                  'Product',
-                  ['Features', 'Encryption', 'File Limits', 'Browser Support'],
-                ),
-                (
-                  'Company',
-                  ['About Us', 'Blog', 'Privacy Policy', 'Terms of Service'],
-                ),
-                (
-                  'Support',
-                  ['Help Center', 'Contact Support', 'Status Page', 'Feedback'],
-                ),
+                {
+                  'title': 'Product',
+                  'links': [
+                    'Features',
+                    'Encryption',
+                    'File Limits',
+                    'Browser Support',
+                  ],
+                },
+                {
+                  'title': 'Company',
+                  'links': [
+                    'About Us',
+                    'Blog',
+                    'Privacy Policy',
+                    'Terms of Service',
+                  ],
+                },
+                {
+                  'title': 'Support',
+                  'links': [
+                    'Help Center',
+                    'Contact Support',
+                    'Status Page',
+                    'Feedback',
+                  ],
+                },
               ].map(
                 (col) => Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        col.$1,
+                        col['title'] as String,
                         style: const TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.w600,
@@ -884,7 +834,7 @@ class _Footer extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(height: 16),
-                      ...col.$2.map(
+                      ...(col['links'] as List<String>).map(
                         (link) => Padding(
                           padding: const EdgeInsets.only(bottom: 10),
                           child: Text(

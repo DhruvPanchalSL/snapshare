@@ -320,18 +320,25 @@ class _SendScreenState extends State<SendScreen> {
       ).animate().fadeIn().scale(begin: const Offset(0.97, 0.97)),
       const SizedBox(height: 28),
       ...[
-        (Icons.lock_outline_rounded, 'No account required'),
-        (Icons.timer_outlined, 'Expires in exactly 5 minutes'),
-        (Icons.high_quality_outlined, 'Zero compression — original quality'),
+        {'icon': Icons.lock_outline_rounded, 'text': 'No account required'},
+        {'icon': Icons.timer_outlined, 'text': 'Expires in exactly 5 minutes'},
+        {
+          'icon': Icons.high_quality_outlined,
+          'text': 'Zero compression — original quality',
+        },
       ].map(
         (e) => Padding(
           padding: const EdgeInsets.only(bottom: 12),
           child: Row(
             children: [
-              Icon(e.$1, color: const Color(0xFF7C3AED), size: 15),
+              Icon(
+                e['icon'] as IconData,
+                color: const Color(0xFF7C3AED),
+                size: 15,
+              ),
               const SizedBox(width: 10),
               Text(
-                e.$2,
+                e['text'] as String,
                 style: TextStyle(
                   color: Colors.white.withOpacity(0.4),
                   fontSize: 13,
